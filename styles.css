@@ -1,0 +1,631 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo h2 {
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #2563eb;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2563eb;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Section Styles */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 0 2rem;
+    align-items: center;
+}
+
+/* Animation Container */
+.animation-container {
+    height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Content Container */
+.content-container {
+    padding: 2rem 0;
+}
+
+.content {
+    max-width: 600px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 1rem;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+/* Section 1: Conversation Scene */
+.conversation-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.person {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.person-1 {
+    left: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.person-2 {
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.head {
+    width: 60px;
+    height: 60px;
+    background: #fbbf24;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.body {
+    width: 40px;
+    height: 80px;
+    background: #3b82f6;
+    border-radius: 20px;
+}
+
+.arms {
+    position: absolute;
+    top: 20px;
+    width: 100px;
+    height: 8px;
+    background: #3b82f6;
+    border-radius: 4px;
+}
+
+.person-1 .arms {
+    left: -30px;
+    transform: rotate(-15deg);
+}
+
+.person-2 .arms {
+    right: -30px;
+    transform: rotate(15deg);
+}
+
+/* Speech Bubbles */
+.speech-bubble {
+    position: absolute;
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.bubble-1 {
+    top: 20%;
+    left: 30%;
+}
+
+.bubble-2 {
+    top: 30%;
+    right: 25%;
+}
+
+.bubble-3 {
+    top: 50%;
+    left: 35%;
+}
+
+.bubble-4 {
+    top: 60%;
+    right: 30%;
+}
+
+.bubble-5 {
+    top: 70%;
+    left: 40%;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.service-card p {
+    color: #6b7280;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Section 2: SCADA Scene */
+.scada-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Antenna Stations */
+.antenna-station {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.station-1 { top: 10%; left: 10%; }
+.station-2 { top: 15%; right: 15%; }
+.station-3 { bottom: 20%; left: 15%; }
+.station-4 { bottom: 15%; right: 10%; }
+
+.antenna-tower {
+    width: 8px;
+    height: 80px;
+    background: #374151;
+    border-radius: 4px;
+    position: relative;
+}
+
+.antenna-tower::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -6px;
+    width: 20px;
+    height: 20px;
+    background: #6b7280;
+    border-radius: 50%;
+}
+
+.signal-wave {
+    position: absolute;
+    top: -5px;
+    left: -6px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3b82f6;
+    border-radius: 50%;
+    opacity: 0;
+    animation: signalPulse 2s infinite;
+}
+
+@keyframes signalPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Central Server */
+.central-server {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.server-body {
+    width: 120px;
+    height: 80px;
+    background: #1f2937;
+    border-radius: 8px;
+    position: relative;
+}
+
+.server-lights {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.server-lights::before,
+.server-lights::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+.server-lights::after {
+    animation-delay: 0.5s;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+/* Connection Lines */
+.connection-line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    opacity: 0;
+}
+
+.line-1 {
+    top: 25%;
+    left: 20%;
+    width: 30%;
+    transform: rotate(45deg);
+}
+
+.line-2 {
+    top: 30%;
+    right: 25%;
+    width: 25%;
+    transform: rotate(-45deg);
+}
+
+.line-3 {
+    bottom: 35%;
+    left: 25%;
+    width: 30%;
+    transform: rotate(-45deg);
+}
+
+.line-4 {
+    bottom: 30%;
+    right: 20%;
+    width: 25%;
+    transform: rotate(45deg);
+}
+
+/* Monitor */
+.monitor {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.screen {
+    width: 100px;
+    height: 60px;
+    background: #1f2937;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen-content {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.data-point {
+    background: #10b981;
+    border-radius: 2px;
+    animation: dataFlow 2s infinite;
+}
+
+.data-point:nth-child(2) { animation-delay: 0.5s; }
+.data-point:nth-child(3) { animation-delay: 1s; }
+.data-point:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes dataFlow {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+.monitor-stand {
+    width: 4px;
+    height: 20px;
+    background: #374151;
+    margin: 0 auto;
+}
+
+/* Observer */
+.observer {
+    position: absolute;
+    top: 70%;
+    right: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.observer-head {
+    width: 40px;
+    height: 40px;
+    background: #fbbf24;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.observer-body {
+    width: 30px;
+    height: 50px;
+    background: #3b82f6;
+    border-radius: 15px;
+}
+
+/* Features List */
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateX(5px);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.feature-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #1f2937;
+}
+
+.feature-content p {
+    color: #6b7280;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.contact-section .section-title,
+.contact-section .section-description {
+    color: white;
+}
+
+.centered {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .section-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .animation-container {
+        height: 400px;
+        order: -1;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .section-container {
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .animation-container {
+        height: 300px;
+    }
+    
+    .contact-info {
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .animation-container {
+        height: 250px;
+    }
+    
+    .person-1, .person-2 {
+        transform: scale(0.8) translateY(-50%);
+    }
+    
+    .antenna-station {
+        transform: scale(0.7);
+    }
+} 

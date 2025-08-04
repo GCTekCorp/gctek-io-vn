@@ -1,11 +1,243 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Title of the document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCTek - Technology Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-
 <body>
-  <h1>Hello world</h1>
-</body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>GCTek</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#scada" class="nav-link">GC-SCADA</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Section 1: Company Services -->
+    <section id="home" class="section">
+        <div class="section-container">
+            <!-- Left Side: Animation -->
+            <div class="animation-container">
+                <div class="conversation-scene">
+                    <!-- Person 1 -->
+                    <div class="person person-1">
+                        <div class="head"></div>
+                        <div class="body"></div>
+                        <div class="arms"></div>
+                    </div>
+                    
+                    <!-- Person 2 -->
+                    <div class="person person-2">
+                        <div class="head"></div>
+                        <div class="body"></div>
+                        <div class="arms"></div>
+                    </div>
+                    
+                    <!-- Speech Bubbles -->
+                    <div class="speech-bubble bubble-1">
+                        <span>💻</span>
+                    </div>
+                    <div class="speech-bubble bubble-2">
+                        <span>⚡</span>
+                    </div>
+                    <div class="speech-bubble bubble-3">
+                        <span>🎓</span>
+                    </div>
+                    <div class="speech-bubble bubble-4">
+                        <span>🏢</span>
+                    </div>
+                    <div class="speech-bubble bubble-5">
+                        <span>📊</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side: Content -->
+            <div class="content-container">
+                <div class="content">
+                    <h1 class="section-title">Technology Solutions for Tomorrow</h1>
+                    <p class="section-description">
+                        We provide comprehensive information technology consulting and software solutions 
+                        across multiple industries, helping organizations transform their digital presence 
+                        and operational efficiency.
+                    </p>
+                    
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">⚡</div>
+                            <h3>Energy Solutions</h3>
+                            <p>Specialized IT consulting for energy sector optimization and digital transformation.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">🎓</div>
+                            <h3>Education Technology</h3>
+                            <p>Innovative software solutions for educational institutions and learning platforms.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">🏢</div>
+                            <h3>Public Investment</h3>
+                            <p>Custom software development for public investment and government sector partners.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">📊</div>
+                            <h3>Office Utilities</h3>
+                            <p>Comprehensive software products providing essential utilities for modern office environments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: GC-SCADA Solution -->
+    <section id="scada" class="section">
+        <div class="section-container">
+            <!-- Left Side: Animation -->
+            <div class="animation-container">
+                <div class="scada-scene">
+                    <!-- Antenna Stations -->
+                    <div class="antenna-station station-1">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="antenna-station station-2">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="antenna-station station-3">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="antenna-station station-4">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+                    
+                    <!-- Central Server -->
+                    <div class="central-server">
+                        <div class="server-body"></div>
+                        <div class="server-lights"></div>
+                    </div>
+                    
+                    <!-- Data Connection Lines -->
+                    <div class="connection-line line-1"></div>
+                    <div class="connection-line line-2"></div>
+                    <div class="connection-line line-3"></div>
+                    <div class="connection-line line-4"></div>
+                    
+                    <!-- Monitor Screen -->
+                    <div class="monitor">
+                        <div class="screen">
+                            <div class="screen-content">
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                            </div>
+                        </div>
+                        <div class="monitor-stand"></div>
+                    </div>
+                    
+                    <!-- Person Watching -->
+                    <div class="observer">
+                        <div class="observer-head"></div>
+                        <div class="observer-body"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side: Content -->
+            <div class="content-container">
+                <div class="content">
+                    <h1 class="section-title">GC-SCADA</h1>
+                    <h2 class="section-subtitle">Modern SCADA Solution</h2>
+                    <p class="section-description">
+                        Our advanced SCADA system collects signals from hundreds of thousands of stations 
+                        with millions of data points, providing real-time monitoring and high-performance 
+                        reporting capabilities for critical infrastructure management.
+                    </p>
+                    
+                    <div class="features-list">
+                        <div class="feature">
+                            <div class="feature-icon">📡</div>
+                            <div class="feature-content">
+                                <h3>Massive Scale</h3>
+                                <p>Handles hundreds of thousands of stations with millions of signals</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-content">
+                                <h3>Real-time Monitoring</h3>
+                                <p>Instant monitoring interface with live data visualization</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">🗄️</div>
+                            <div class="feature-content">
+                                <h3>Centralized Database</h3>
+                                <p>Robust centralized database for efficient data management</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-content">
+                                <h3>High-Performance Reports</h3>
+                                <p>Advanced reporting capabilities with customizable dashboards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="section-container">
+            <div class="content-container centered">
+                <div class="content">
+                    <h1 class="section-title">Get In Touch</h1>
+                    <p class="section-description">
+                        Ready to transform your business with our technology solutions? 
+                        Contact us today to discuss your project requirements.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>info@gctek.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+84 123 456 789</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Ho Chi Minh City, Vietnam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
 </html>
