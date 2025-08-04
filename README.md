@@ -40,7 +40,18 @@ A modern, responsive landing page for GCTek technology company featuring GSAP an
   - Centralized database
   - High-performance reporting
 
-#### Section 3: Contact
+#### Section 3: GC-Messenger-Assistant Solution
+- **Left Side**: Messenger assistant animation with:
+  - Person viewing multiple app windows (Zalo, Viber, Messenger, WhatsApp)
+  - Analysis report panel
+  - Animated bubbles with special characters showing insights
+- **Right Side**: Product features including:
+  - Multi-platform conversation management
+  - AI-powered conversation analysis
+  - Smart writing assistant with real-time suggestions
+  - Comprehensive reporting and insights
+
+#### Section 4: Contact
 - Contact information with modern gradient background
 - Professional contact details
 

@@ -15,6 +15,9 @@ function initializeAnimations() {
     
     // Section 2: SCADA Scene Animations
     animateScadaScene();
+    
+    // Section 3: Messenger Scene Animations
+    animateMessengerScene();
 }
 
 // Conversation Scene Animations
@@ -174,6 +177,104 @@ function animateScadaScene() {
             duration: 2, 
             ease: "power2.inOut" 
         });
+}
+
+// Messenger Scene Animations
+function animateMessengerScene() {
+    // Animate person
+    gsap.timeline({ repeat: -1, repeatDelay: 1 })
+        .to('.messenger-person', { 
+            y: -5, 
+            duration: 2, 
+            ease: "power2.inOut" 
+        })
+        .to('.messenger-person', { 
+            y: 0, 
+            duration: 2, 
+            ease: "power2.inOut" 
+        });
+    
+    // Animate app windows
+    const appWindows = document.querySelectorAll('.app-window');
+    appWindows.forEach((window, index) => {
+        gsap.timeline({ repeat: -1, repeatDelay: 2 })
+            .to(window, { 
+                scale: 1.05, 
+                duration: 1, 
+                ease: "power2.inOut",
+                delay: index * 0.3 
+            })
+            .to(window, { 
+                scale: 1, 
+                duration: 1, 
+                ease: "power2.inOut" 
+            });
+    });
+    
+    // Animate report panel
+    gsap.timeline({ repeat: -1, repeatDelay: 1 })
+        .to('.report-panel', { 
+            scale: 1.05, 
+            duration: 1.5, 
+            ease: "power2.inOut" 
+        })
+        .to('.report-panel', { 
+            scale: 1, 
+            duration: 1.5, 
+            ease: "power2.inOut" 
+        });
+    
+    // Animate analysis bubbles
+    const analysisBubbles = document.querySelectorAll('.analysis-bubble');
+    analysisBubbles.forEach((bubble, index) => {
+        gsap.timeline({ repeat: -1, repeatDelay: 4 })
+            .to(bubble, { 
+                opacity: 1, 
+                scale: 1, 
+                duration: 0.5, 
+                delay: index * 0.4 
+            })
+            .to(bubble, { 
+                y: -15, 
+                duration: 2, 
+                ease: "power2.out" 
+            })
+            .to(bubble, { 
+                opacity: 0, 
+                scale: 0.8, 
+                duration: 0.5 
+            });
+    });
+    
+    // Animate chat lines
+    const chatLines = document.querySelectorAll('.chat-line');
+    chatLines.forEach((line, index) => {
+        gsap.timeline({ repeat: -1, repeatDelay: 3 })
+            .to(line, { 
+                opacity: 0.3, 
+                duration: 1, 
+                delay: index * 0.2 
+            })
+            .to(line, { 
+                opacity: 1, 
+                duration: 1 
+            });
+    });
+    
+    // Animate report lines
+    const reportLines = document.querySelectorAll('.report-line');
+    reportLines.forEach((line, index) => {
+        gsap.timeline({ repeat: -1, repeatDelay: 2 })
+            .to(line, { 
+                opacity: 0.3, 
+                duration: 1, 
+                delay: index * 0.3 
+            })
+            .to(line, { 
+                opacity: 1, 
+                duration: 1 
+            });
+    });
 }
 
 // Scroll-triggered animations
