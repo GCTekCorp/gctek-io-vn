@@ -892,3 +892,394 @@ body {
   top: 70%;
   right: 55%;
 }
+
+/* Welcome Section */
+.welcome-section {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 30% 50%,
+      rgba(0, 255, 0, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(0, 255, 0, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Spiral Gate Animation */
+.spiral-gate {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.spiral-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: #00ff00;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+  z-index: 10;
+}
+
+.spiral-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid #00ff00;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.ring-1 {
+  width: 60px;
+  height: 60px;
+  animation: spiralRotate 8s linear infinite;
+}
+
+.ring-2 {
+  width: 100px;
+  height: 100px;
+  animation: spiralRotate 8s linear infinite reverse;
+}
+
+.ring-3 {
+  width: 140px;
+  height: 140px;
+  animation: spiralRotate 12s linear infinite;
+}
+
+.ring-4 {
+  width: 180px;
+  height: 180px;
+  animation: spiralRotate 12s linear infinite reverse;
+}
+
+.ring-5 {
+  width: 220px;
+  height: 220px;
+  animation: spiralRotate 16s linear infinite;
+}
+
+.ring-6 {
+  width: 260px;
+  height: 260px;
+  animation: spiralRotate 20s linear infinite reverse;
+}
+
+.ring-7 {
+  width: 300px;
+  height: 300px;
+  animation: spiralRotate 24s linear infinite;
+}
+
+@keyframes spiralRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Enhanced spiral animations */
+.spiral-gate {
+  animation: spiralFloat 4s ease-in-out infinite;
+}
+
+@keyframes spiralFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.spiral-core {
+  animation: corePulse 2s ease-in-out infinite;
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+  }
+  50% {
+    box-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00, 0 0 80px #00ff00;
+  }
+}
+
+/* Code Lines */
+.code-line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  height: 2px;
+  border-radius: 1px;
+  opacity: 0;
+  animation: codeFlow 3s linear infinite;
+}
+
+.line-1 {
+  width: 80px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.line-2 {
+  width: 60px;
+  top: 30%;
+  left: 5%;
+  animation-delay: 0.5s;
+}
+
+.line-3 {
+  width: 100px;
+  top: 40%;
+  left: 15%;
+  animation-delay: 1s;
+}
+
+.line-4 {
+  width: 70px;
+  top: 50%;
+  left: 8%;
+  animation-delay: 1.5s;
+}
+
+.line-5 {
+  width: 90px;
+  top: 60%;
+  left: 12%;
+  animation-delay: 2s;
+}
+
+.line-6 {
+  width: 50px;
+  top: 70%;
+  left: 3%;
+  animation-delay: 2.5s;
+}
+
+.line-7 {
+  width: 110px;
+  top: 80%;
+  left: 18%;
+  animation-delay: 3s;
+}
+
+.line-8 {
+  width: 65px;
+  top: 90%;
+  left: 7%;
+  animation-delay: 3.5s;
+}
+
+.line-9 {
+  width: 85px;
+  top: 25%;
+  left: 25%;
+  animation-delay: 4s;
+}
+
+.line-10 {
+  width: 55px;
+  top: 35%;
+  left: 18%;
+  animation-delay: 4.5s;
+}
+
+.line-11 {
+  width: 95px;
+  top: 65%;
+  left: 22%;
+  animation-delay: 5s;
+}
+
+.line-12 {
+  width: 75px;
+  top: 85%;
+  left: 15%;
+  animation-delay: 5.5s;
+}
+
+@keyframes codeFlow {
+  0% {
+    opacity: 0;
+    transform: translateX(-150px) scale(0.3);
+  }
+  15% {
+    opacity: 1;
+    transform: translateX(-100px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: translateX(100px) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(150px) scale(0.3);
+  }
+}
+
+/* Particles */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00ff00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ff00;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-1 {
+  top: 15%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  top: 25%;
+  right: 25%;
+  animation-delay: 0.7s;
+}
+
+.particle-3 {
+  top: 45%;
+  left: 10%;
+  animation-delay: 1.4s;
+}
+
+.particle-4 {
+  top: 55%;
+  right: 15%;
+  animation-delay: 2.1s;
+}
+
+.particle-5 {
+  top: 75%;
+  left: 30%;
+  animation-delay: 2.8s;
+}
+
+.particle-6 {
+  top: 85%;
+  right: 20%;
+  animation-delay: 3.5s;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1.5);
+  }
+}
+
+/* Welcome Text Styles */
+.welcome-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.welcome-description {
+  font-size: 1.3rem;
+  color: #e5e7eb;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.text-animation {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: textReveal 0.8s ease-out forwards;
+}
+
+.welcome-title .text-animation {
+  animation-delay: 0.5s;
+}
+
+.welcome-description .text-animation {
+  animation-delay: 1s;
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Welcome section responsive */
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 2.5rem;
+  }
+
+  .welcome-description {
+    font-size: 1.1rem;
+  }
+
+  .spiral-gate {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .welcome-description {
+    font-size: 1rem;
+  }
+
+  .spiral-gate {
+    width: 200px;
+    height: 200px;
+  }
+}
