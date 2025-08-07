@@ -24,23 +24,23 @@ function initializeAnimations() {
 function animateConversationScene() {
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
     
-    // Animate people
-    tl.to('.person-1', { 
+    // Animate Eve robots (section 1)
+    tl.to('.section-1-person-1', { 
         y: -10, 
         duration: 1, 
         ease: "power2.inOut" 
     })
-    .to('.person-2', { 
+    .to('.section-1-person-2', { 
         y: -10, 
         duration: 1, 
         ease: "power2.inOut" 
     }, "<")
-    .to('.person-1', { 
+    .to('.section-1-person-1', { 
         y: 0, 
         duration: 1, 
         ease: "power2.inOut" 
     })
-    .to('.person-2', { 
+    .to('.section-1-person-2', { 
         y: 0, 
         duration: 1, 
         ease: "power2.inOut" 
