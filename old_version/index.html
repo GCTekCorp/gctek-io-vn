@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCTek - Modern Software Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>GCTek</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#scada" class="nav-link">GC-SCADA</a>
+                <a href="#messenger" class="nav-link">GC-MA</a>
+                <a href="#contact" class="nav-link">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Company Services -->
+    <section id="home" class="section">
+        <div class="section-container">
+            <!-- Left Side: Animation -->
+            <div class="animation-container">
+                <div class="animation-scene">
+                    <!-- Eve Robot 1 -->
+                    <div class="person section-1-person-1 eve-robot">
+                        <svg width="80" height="140" viewBox="0 0 80 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g class="eve-body-group">
+                                <!-- Body -->
+                                <ellipse cx="40" cy="90" rx="28" ry="40" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                                <!-- Head -->
+                                <ellipse cx="40" cy="45" rx="24" ry="28" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                                <!-- Face (visor) -->
+                                <ellipse cx="40" cy="45" rx="14" ry="16" fill="#1A2A38"/>
+                                <ellipse cx="33" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
+                                <ellipse cx="47" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
+                                <!-- Arms -->
+                                <rect x="10" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                                <rect x="62" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <!-- Eve Robot 2 -->
+                    <div class="person section-1-person-2 eve-robot">
+                        <svg width="80" height="140" viewBox="0 0 80 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g class="eve-body-group">
+                                <!-- Body -->
+                                <ellipse cx="40" cy="90" rx="28" ry="40" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                                <!-- Head -->
+                                <ellipse cx="40" cy="45" rx="24" ry="28" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                                <!-- Face (visor) -->
+                                <ellipse cx="40" cy="45" rx="14" ry="16" fill="#1A2A38"/>
+                                <ellipse cx="33" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
+                                <ellipse cx="47" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
+                                <!-- Arms -->
+                                <rect x="10" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                                <rect x="62" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="speech-bubble section-1-bubble-1">
+                        <span>💻</span>
+                    </div>
+                    <div class="speech-bubble section-1-bubble-2">
+                        <span>⚡</span>
+                    </div>
+                    <div class="speech-bubble section-1-bubble-3">
+                        <span>🎓</span>
+                    </div>
+                    <div class="speech-bubble section-1-bubble-4">
+                        <span>🏢</span>
+                    </div>
+                    <div class="speech-bubble section-1-bubble-5">
+                        <span>📊</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="content-container">
+                <div class="content-body">
+                    <h1 class="content-title">We Are GCTek</h1>
+                    <p class="content-description">
+                        We provide comprehensive information technology consulting and software solutions
+                        across multiple industries, helping organizations transform their digital presence
+                        and operational efficiency.
+                    </p>
+
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="content-card-icon">⚡</div>
+                            <h3>Energy Solutions</h3>
+                            <p>Specialized IT consulting for energy sector optimization and digital transformation.</p>
+                        </div>
+
+                        <div class="content-card">
+                            <div class="content-card-icon">🎓</div>
+                            <h3>Education Technology</h3>
+                            <p>Innovative software solutions for educational institutions and learning platforms.</p>
+                        </div>
+
+                        <div class="content-card">
+                            <div class="content-card-icon">🏢</div>
+                            <h3>Public Investment</h3>
+                            <p>Custom software development for public investment and government sector partners.</p>
+                        </div>
+
+                        <div class="content-card">
+                            <div class="content-card-icon">📊</div>
+                            <h3>Office Utilities</h3>
+                            <p>Comprehensive software products providing essential utilities for modern office
+                                environments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: GC-SCADA Solution -->
+    <section id="scada" class="section">
+        <div class="section-container">
+            <!-- Left Side: Animation -->
+            <div class="animation-container">
+                <div class="scada-scene">
+                    <!-- Antenna Stations -->
+                    <div class="antenna-station station-1">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="antenna-station station-2">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="antenna-station station-3">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+                    <div class="antenna-station station-4">
+                        <div class="antenna-tower"></div>
+                        <div class="signal-wave"></div>
+                    </div>
+
+                    <!-- Central Server -->
+                    <div class="central-server">
+                        <div class="server-body"></div>
+                        <div class="server-lights"></div>
+                    </div>
+
+                    <!-- Data Connection Lines -->
+                    <div class="connection-line line-1"></div>
+                    <div class="connection-line line-2"></div>
+                    <div class="connection-line line-3"></div>
+                    <div class="connection-line line-4"></div>
+
+                    <!-- Monitor Screen -->
+                    <div class="monitor">
+                        <div class="screen">
+                            <div class="screen-content">
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                            </div>
+                        </div>
+                        <div class="monitor-stand"></div>
+                    </div>
+
+                    <!-- Person Watching -->
+                    <div class="observer">
+                        <div class="observer-head"></div>
+                        <div class="observer-body"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="content-container">
+                <div class="content-body">
+                    <h1 class="content-title">GC-SCADA</h1>
+                    <h2 class="content-subtitle">Modern SCADA Solution</h2>
+                    <p class="content-description">
+                        Our advanced SCADA system collects signals from hundreds of thousands of stations
+                        with millions of data points, providing real-time monitoring and high-performance
+                        reporting capabilities for critical infrastructure management.
+                    </p>
+
+                    <div class="features-list">
+                        <div class="feature">
+                            <div class="feature-icon">📡</div>
+                            <div class="feature-content">
+                                <h3>Massive Scale</h3>
+                                <p>Handles hundreds of thousands of stations with millions of signals</p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-content">
+                                <h3>Real-time Monitoring</h3>
+                                <p>Instant monitoring interface with live data visualization</p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">🗄️</div>
+                            <div class="feature-content">
+                                <h3>Centralized Database</h3>
+                                <p>Robust centralized database for efficient data management</p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-content">
+                                <h3>High-Performance Reports</h3>
+                                <p>Advanced reporting capabilities with customizable dashboards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: GC-Messenger-Assistant Solution -->
+    <section id="messenger" class="section">
+        <div class="section-container">
+            <!-- Left Side: Animation -->
+            <div class="animation-container">
+                <div class="messenger-scene">
+                    <!-- Person -->
+                    <div class="messenger-person">
+                        <div class="person-head"></div>
+                        <div class="person-body"></div>
+                        <div class="person-arms"></div>
+                    </div>
+
+                    <!-- App Windows -->
+                    <div class="app-window window-1">
+                        <div class="window-header">
+                            <div class="app-icon">💬</div>
+                            <div class="app-name">Zalo</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chat-line"></div>
+                            <div class="chat-line"></div>
+                            <div class="chat-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-window window-2">
+                        <div class="window-header">
+                            <div class="app-icon">📱</div>
+                            <div class="app-name">Viber</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chat-line"></div>
+                            <div class="chat-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-window window-3">
+                        <div class="window-header">
+                            <div class="app-icon">💙</div>
+                            <div class="app-name">Messenger</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chat-line"></div>
+                            <div class="chat-line"></div>
+                            <div class="chat-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-window window-4">
+                        <div class="window-header">
+                            <div class="app-icon">📞</div>
+                            <div class="app-name">WhatsApp</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chat-line"></div>
+                            <div class="chat-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Report -->
+                    <div class="report-panel">
+                        <div class="report-header">
+                            <div class="report-icon">📊</div>
+                            <div class="report-title">Analysis Report</div>
+                        </div>
+                        <div class="report-content">
+                            <div class="report-line"></div>
+                            <div class="report-line"></div>
+                            <div class="report-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Bubbles -->
+                    <div class="analysis-bubble bubble-1">
+                        <span>😊</span>
+                    </div>
+                    <div class="analysis-bubble bubble-2">
+                        <span>📈</span>
+                    </div>
+                    <div class="analysis-bubble bubble-3">
+                        <span>✅</span>
+                    </div>
+                    <div class="analysis-bubble bubble-4">
+                        <span>💡</span>
+                    </div>
+                    <div class="analysis-bubble bubble-5">
+                        <span>🎯</span>
+                    </div>
+                    <div class="analysis-bubble bubble-6">
+                        <span>🔍</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="content-container">
+                <div class="content-body">
+                    <h1 class="content-title">GC Messenger Assistant</h1>
+                    <h2 class="content-subtitle">Intelligent Conversation Management</h2>
+                    <p class="content-description">
+                        Our advanced messenger assistant solution helps users manage conversations across
+                        multiple platforms including Zalo, Viber, Messenger, and WhatsApp, providing
+                        intelligent analysis and real-time writing suggestions.
+                    </p>
+
+                    <div class="features-list">
+                        <div class="feature">
+                            <div class="feature-icon">💬</div>
+                            <div class="feature-content">
+                                <h3>Multi-Platform Support</h3>
+                                <p>Seamlessly manage conversations from Zalo, Viber, Messenger, WhatsApp, and Telegram
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-content">
+                                <h3>Conversation Analysis</h3>
+                                <p>AI-powered analysis of conversation history with sentiment assessment and topic
+                                    identification</p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-content">
+                                <h3>Smart Writing Assistant</h3>
+                                <p>Real-time suggestions for spelling, specialized terminology, and contextual
+                                    appropriateness</p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">📈</div>
+                            <div class="feature-content">
+                                <h3>Comprehensive Reports</h3>
+                                <p>Detailed reports showing conversation sentiment, participant attitudes, and key
+                                    insights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="section-container">
+            <div class="content-container centered">
+                <div class="content-body">
+                    <h1 class="content-title">Get In Touch</h1>
+                    <p class="content-description">
+                        Ready to transform your business with our technology solutions?
+                        Contact us today to discuss your project requirements.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>adm.gctech@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+84 343 033 268</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Ha Noi Capital, Vietnam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

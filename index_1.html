@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCTEK | Outsourcing & Digital Transformation</title>
+    
+    <!-- Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts (Manrope for that modern tech look) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #f0f0f0;
+            --accent-color: #4ecdc4;
+            --cursor-size: 20px;
+            --cursor-hover-size: 80px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden; /* Hide horizontal scroll */
+            cursor: none; /* Hide default cursor */
+        }
+
+        /* Custom Scrollbar (The "Page Scroll Bar" requirement) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+            mix-blend-mode: difference;
+        }
+        
+        .custom-cursor.active {
+            width: var(--cursor-hover-size);
+            height: var(--cursor-hover-size);
+            background-color: #fff;
+            mix-blend-mode: difference;
+            border-color: transparent;
+        }
+
+        /* Typography & Layout */
+        h1.hero-title {
+            font-size: 8vw;
+            font-weight: 800;
+            line-height: 0.9;
+            text-transform: uppercase;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(50px);
+        }
+
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        
+        /* Header */
+        nav {
+            padding: 2rem 0;
+            mix-blend-mode: difference;
+        }
+
+        /* Marquee Section */
+        .marquee-section {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .marquee-inner {
+            display: flex;
+            width: max-content;
+        }
+
+        .marquee-item {
+            font-size: 4rem;
+            font-weight: 200;
+            padding: 0 2rem;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+        .marquee-item span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        .service-card {
+            padding: 3rem 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:last-child {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .service-number {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 3rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        /* Hover Reveal Image (The "Hover on items" animation) */
+        .hover-reveal {
+            position: fixed;
+            width: 300px;
+            height: 200px;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 5;
+            transform: translate(-50%, -50%) scale(0.8);
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            filter: grayscale(100%);
+        }
+
+        /* Footer */
+        footer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+        }
+        
+        .footer-cta {
+            font-size: 5vw;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* Utility for animations */
+        .char { display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor Element -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Hover Reveal Image Element -->
+    <div class="hover-reveal"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed-top w-100">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="#" class="fs-4 fw-bold hoverable">GCTEK.</a>
+            <div class="d-flex gap-4">
+                <a href="#services" class="hoverable">Work</a>
+                <a href="#about" class="hoverable">About</a>
+                <a href="#contact" class="hoverable">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="vh-100 d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <p class="text-uppercase text-muted mb-4 fade-in-up">Outsourcing Excellence</p>
+            <h1 class="hero-title">
+                Next Gen <br>
+                <span class="outline-text">Digital</span> <br>
+                Solutions
+            </h1>
+        </div>
+    </section>
+
+    <!-- Running Text (Marquee) -->
+    <section class="marquee-section">
+        <div class="marquee-inner">
+            <div class="marquee-item">SCADA Systems <span>//</span></div>
+            <div class="marquee-item">Energy Solutions <span>//</span></div>
+            <div class="marquee-item">Digital Transformation <span>//</span></div>
+            <div class="marquee-item">Outsourcing <span>//</span></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="marquee-item">SCADA Systems <span>//</span></div>
+            <div class="marquee-item">Energy Solutions <span>//</span></div>
+            <div class="marquee-item">Digital Transformation <span>//</span></div>
+            <div class="marquee-item">Outsourcing <span>//</span></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="display-4 fw-bold mb-5 hoverable">Our Expertise</h2>
+                </div>
+            </div>
+
+            <!-- Service Items with Data-Image for hover effect -->
+            <div class="service-card hoverable-service" data-img="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1000&auto=format&fit=crop">
+                <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <span class="service-number">01</span>
+                    </div>
+                    <div class="col-md-10">
+                        <h3 class="service-title">Energy Sector</h3>
+                        <p class="text-muted mt-2">Sustainable power management and analytics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card hoverable-service" data-img="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop">
+                <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <span class="service-number">02</span>
+                    </div>
+                    <div class="col-md-10">
+                        <h3 class="service-title">Digital Transformation</h3>
+                        <p class="text-muted mt-2">Modernizing legacy infrastructures.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card hoverable-service" data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop">
+                <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <span class="service-number">03</span>
+                    </div>
+                    <div class="col-md-10">
+                        <h3 class="service-title">SCADA Systems</h3>
+                        <p class="text-muted mt-2">Real-time industrial control and monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Description / About -->
+    <section class="py-5 vh-75 d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p class="fs-2 lh-base text-reveal">
+                        At <span class="text-white fw-bold">GCTEK</span>, we bridge the gap between industrial hardware and modern software. We provide high-end outsourcing for complex engineering challenges.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-muted text-uppercase text-center mb-4">Ready to start?</p>
+                    <h2 class="footer-cta hoverable">hello@gctek.com</h2>
+                </div>
+            </div>
+            <div class="row mt-5 pt-5 text-center text-muted">
+                <div class="col-12">
+                    <small>&copy; 2024 GCTEK. All rights reserved.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Lenis for Smooth Scroll (Critical for Lusion feel) -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script>
+        // 1. Initialize Smooth Scroll (Lenis)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Connect GSAP ScrollTrigger to Lenis
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 2. Custom Cursor Logic
+        const cursor = document.querySelector('.custom-cursor');
+        const hoverables = document.querySelectorAll('.hoverable, a');
+        
+        // Move cursor with mouse
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.1, // slight lag for "heavy" feel
+                ease: "power2.out"
+            });
+        });
+
+        // Hover effects
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+        });
+
+        // 3. Hero Animations
+        const tl = gsap.timeline();
+        
+        tl.to('.hero-title', {
+            y: 0,
+            opacity: 1,
+            duration: 1.5,
+            ease: "power4.out",
+            stagger: 0.2
+        });
+        
+        tl.to('.fade-in-up', {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out"
+        }, "-=1");
+
+        // 4. Running Text (Marquee)
+        gsap.to(".marquee-inner", {
+            xPercent: -50,
+            ease: "none",
+            duration: 20, // Speed
+            repeat: -1
+        });
+
+        // 5. Services Hover Image Reveal
+        const services = document.querySelectorAll('.hoverable-service');
+        const revealImg = document.querySelector('.hover-reveal');
+
+        services.forEach(service => {
+            service.addEventListener('mouseenter', (e) => {
+                const imgUrl = service.getAttribute('data-img');
+                revealImg.style.backgroundImage = `url(${imgUrl})`;
+                
+                gsap.to(revealImg, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                
+                // Active state for cursor
+                cursor.classList.add('active');
+            });
+
+            service.addEventListener('mouseleave', () => {
+                gsap.to(revealImg, {
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                cursor.classList.remove('active');
+            });
+
+            service.addEventListener('mousemove', (e) => {
+                gsap.to(revealImg, {
+                    x: e.clientX,
+                    y: e.clientY,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // 6. Text Reveal on Scroll
+        const textElements = document.querySelectorAll('.text-reveal');
+        
+        textElements.forEach(text => {
+            gsap.from(text, {
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    scrub: true,
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1
+            });
+        });
+
+        // 7. Parallax Effect for Sections
+        gsap.utils.toArray('section').forEach((section, i) => {
+            gsap.to(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                },
+                backgroundPosition: "50% 100%", 
+                ease: "none"
+            });
+        });
+
+    </script>
+</body>
+</html>

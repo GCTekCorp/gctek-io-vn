@@ -1,418 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GCTek - Modern Software Solutions</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>GCTEK | Engineering the Future</title>
+    
+    <!-- Fonts: Inter for UI, JetBrains Mono for Code/Tech feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    
+    <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-</head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
 
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0f0f0f;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --accent: #00dc82; /* Tech Green */
+            --border: #222222;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle Grid Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.05em;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-contact {
+            background: var(--text-main);
+            color: var(--bg-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(to bottom right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0; /* Start hidden for GSAP */
+            transform: translateY(30px);
+        }
+
+        .hero-terminal {
+            font-family: var(--font-mono);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            opacity: 0;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--accent);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Services Section */
+        .section-title {
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .services {
+            padding: 6rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            margin-bottom: 4rem;
+        }
+
+        .services-header h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .card-icon {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* Decorative Code Overlay in Card */
+        .code-bg {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            opacity: 0.03;
+            font-family: var(--font-mono);
+            font-size: 4rem;
+            pointer-events: none;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 4rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 1.5rem; }
+            .nav-links { display: none; } /* Simple mobile hide for demo */
+            .services { padding: 4rem 1.5rem; }
+        }
+    </style>
+</head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>GCTek</h2>
-            </div>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#scada" class="nav-link">GC-SCADA</a>
-                <a href="#messenger" class="nav-link">GC-MA</a>
-                <a href="#contact" class="nav-link">Contact Us</a>
-            </div>
+
+    <div class="bg-grid"></div>
+
+    <nav>
+        <div class="logo">GCTEK_</div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#" class="btn-contact">Start Project</a>
         </div>
     </nav>
 
-    <!-- Section 1: Company Services -->
-    <section id="home" class="section">
-        <div class="section-container">
-            <!-- Left Side: Animation -->
-            <div class="animation-container">
-                <div class="animation-scene">
-                    <!-- Eve Robot 1 -->
-                    <div class="person section-1-person-1 eve-robot">
-                        <svg width="80" height="140" viewBox="0 0 80 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g class="eve-body-group">
-                                <!-- Body -->
-                                <ellipse cx="40" cy="90" rx="28" ry="40" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                                <!-- Head -->
-                                <ellipse cx="40" cy="45" rx="24" ry="28" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                                <!-- Face (visor) -->
-                                <ellipse cx="40" cy="45" rx="14" ry="16" fill="#1A2A38"/>
-                                <ellipse cx="33" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
-                                <ellipse cx="47" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
-                                <!-- Arms -->
-                                <rect x="10" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                                <rect x="62" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <!-- Eve Robot 2 -->
-                    <div class="person section-1-person-2 eve-robot">
-                        <svg width="80" height="140" viewBox="0 0 80 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g class="eve-body-group">
-                                <!-- Body -->
-                                <ellipse cx="40" cy="90" rx="28" ry="40" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                                <!-- Head -->
-                                <ellipse cx="40" cy="45" rx="24" ry="28" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                                <!-- Face (visor) -->
-                                <ellipse cx="40" cy="45" rx="14" ry="16" fill="#1A2A38"/>
-                                <ellipse cx="33" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
-                                <ellipse cx="47" cy="45" rx="3" ry="4" fill="#5ED6F7"/>
-                                <!-- Arms -->
-                                <rect x="10" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                                <rect x="62" y="80" width="8" height="40" rx="6" fill="#F4F8FB" stroke="#B0C4D9" stroke-width="2"/>
-                            </g>
-                        </svg>
-                    </div>
+    <section class="hero">
+        <div class="hero-terminal">
+            <span id="typewriter"></span><span class="cursor"></span>
+        </div>
+        <h1>Building the Backbone<br>of Modern Industry.</h1>
+        <p style="color: var(--text-muted); margin-top: 1rem; max-width: 600px; opacity: 0; transform: translateY(20px);" class="hero-sub">
+            Premium outsourcing for Energy, Digital Transformation, and SCADA Systems.
+        </p>
+    </section>
 
-                    <div class="speech-bubble section-1-bubble-1">
-                        <span>💻</span>
-                    </div>
-                    <div class="speech-bubble section-1-bubble-2">
-                        <span>⚡</span>
-                    </div>
-                    <div class="speech-bubble section-1-bubble-3">
-                        <span>🎓</span>
-                    </div>
-                    <div class="speech-bubble section-1-bubble-4">
-                        <span>🏢</span>
-                    </div>
-                    <div class="speech-bubble section-1-bubble-5">
-                        <span>📊</span>
-                    </div>
-                </div>
+    <section class="services" id="services">
+        <div class="services-header">
+            <span class="section-title">01 — Our Expertise</span>
+            <h2>Engineered for scale.<br>Optimized for efficiency.</h2>
+        </div>
+
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <span class="card-icon">&lt;ENERGY /&gt;</span>
+                <h3>Smart Energy Solutions</h3>
+                <p>We build intelligent monitoring systems for renewable energy grids, ensuring maximum efficiency and real-time data analysis.</p>
+                <div class="code-bg">⚡</div>
             </div>
 
-            <!-- Right Side: Content -->
-            <div class="content-container">
-                <div class="content-body">
-                    <h1 class="content-title">We Are GCTek</h1>
-                    <p class="content-description">
-                        We provide comprehensive information technology consulting and software solutions
-                        across multiple industries, helping organizations transform their digital presence
-                        and operational efficiency.
-                    </p>
+            <!-- Card 2 -->
+            <div class="card">
+                <span class="card-icon">&lt;DIGITAL /&gt;</span>
+                <h3>Digital Transformation</h3>
+                <p>Modernizing legacy workflows into seamless digital ecosystems. We bridge the gap between physical operations and cloud infrastructure.</p>
+                <div class="code-bg">10</div>
+            </div>
 
-                    <div class="content-grid">
-                        <div class="content-card">
-                            <div class="content-card-icon">⚡</div>
-                            <h3>Energy Solutions</h3>
-                            <p>Specialized IT consulting for energy sector optimization and digital transformation.</p>
-                        </div>
-
-                        <div class="content-card">
-                            <div class="content-card-icon">🎓</div>
-                            <h3>Education Technology</h3>
-                            <p>Innovative software solutions for educational institutions and learning platforms.</p>
-                        </div>
-
-                        <div class="content-card">
-                            <div class="content-card-icon">🏢</div>
-                            <h3>Public Investment</h3>
-                            <p>Custom software development for public investment and government sector partners.</p>
-                        </div>
-
-                        <div class="content-card">
-                            <div class="content-card-icon">📊</div>
-                            <h3>Office Utilities</h3>
-                            <p>Comprehensive software products providing essential utilities for modern office
-                                environments.</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <span class="card-icon">&lt;SCADA /&gt;</span>
+                <h3>SCADA Systems</h3>
+                <p>Robust supervisory control and data acquisition architectures. Secure, reliable, and built for mission-critical industrial environments.</p>
+                <div class="code-bg">{}</div>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: GC-SCADA Solution -->
-    <section id="scada" class="section">
-        <div class="section-container">
-            <!-- Left Side: Animation -->
-            <div class="animation-container">
-                <div class="scada-scene">
-                    <!-- Antenna Stations -->
-                    <div class="antenna-station station-1">
-                        <div class="antenna-tower"></div>
-                        <div class="signal-wave"></div>
-                    </div>
-                    <div class="antenna-station station-2">
-                        <div class="antenna-tower"></div>
-                        <div class="signal-wave"></div>
-                    </div>
-                    <div class="antenna-station station-3">
-                        <div class="antenna-tower"></div>
-                        <div class="signal-wave"></div>
-                    </div>
-                    <div class="antenna-station station-4">
-                        <div class="antenna-tower"></div>
-                        <div class="signal-wave"></div>
-                    </div>
+    <footer>
+        <p>&copy; 2025 GCTEK. System Status: Online.</p>
+    </footer>
 
-                    <!-- Central Server -->
-                    <div class="central-server">
-                        <div class="server-body"></div>
-                        <div class="server-lights"></div>
-                    </div>
+    <script>
+        // Register GSAP Plugins
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-                    <!-- Data Connection Lines -->
-                    <div class="connection-line line-1"></div>
-                    <div class="connection-line line-2"></div>
-                    <div class="connection-line line-3"></div>
-                    <div class="connection-line line-4"></div>
+        // Hero Animations
+        const tl = gsap.timeline();
 
-                    <!-- Monitor Screen -->
-                    <div class="monitor">
-                        <div class="screen">
-                            <div class="screen-content">
-                                <div class="data-point"></div>
-                                <div class="data-point"></div>
-                                <div class="data-point"></div>
-                                <div class="data-point"></div>
-                            </div>
-                        </div>
-                        <div class="monitor-stand"></div>
-                    </div>
+        // 1. Fade in Terminal
+        tl.to(".hero-terminal", {
+            opacity: 1,
+            duration: 0.5,
+            y: 0,
+            ease: "power2.out"
+        })
+        // 2. Typewriter Effect inside Terminal
+        .to("#typewriter", {
+            text: {
+                value: "Initializing GCTEK Core Systems...",
+                delimiter: "" 
+            },
+            duration: 2,
+            ease: "none"
+        })
+        // 3. Hero Text Reveal
+        .to(".hero h1", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out"
+        }, "-=0.5")
+        // 4. Subtext Reveal
+        .to(".hero-sub", {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out"
+        }, "-=0.8");
 
-                    <!-- Person Watching -->
-                    <div class="observer">
-                        <div class="observer-head"></div>
-                        <div class="observer-body"></div>
-                    </div>
-                </div>
-            </div>
+        // Service Cards Animation on Scroll
+        gsap.utils.toArray('.card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%", // Start when top of card hits 85% of viewport height
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.1, // Stagger effect
+                ease: "power3.out"
+            });
+        });
 
-            <!-- Right Side: Content -->
-            <div class="content-container">
-                <div class="content-body">
-                    <h1 class="content-title">GC-SCADA</h1>
-                    <h2 class="content-subtitle">Modern SCADA Solution</h2>
-                    <p class="content-description">
-                        Our advanced SCADA system collects signals from hundreds of thousands of stations
-                        with millions of data points, providing real-time monitoring and high-performance
-                        reporting capabilities for critical infrastructure management.
-                    </p>
+        // Header Animation (Glass effect enhancement on scroll)
+        ScrollTrigger.create({
+            start: "top -50",
+            end: 99999,
+            toggleClass: {className: "scrolled", targets: "nav"}
+        });
 
-                    <div class="features-list">
-                        <div class="feature">
-                            <div class="feature-icon">📡</div>
-                            <div class="feature-content">
-                                <h3>Massive Scale</h3>
-                                <p>Handles hundreds of thousands of stations with millions of signals</p>
-                            </div>
-                        </div>
+        // Interactive Cursor Effect for Terminal (Optional loop to clear/retype)
+        setTimeout(() => {
+            let phrases = [
+                "Optimizing SCADA Architecture...", 
+                "Deploying Energy Algorithms...", 
+                "GCTEK: Ready for Deployment."
+            ];
+            let masterTl = gsap.timeline({repeat: -1, repeatDelay: 1});
+            
+            phrases.forEach(phrase => {
+                let tl = gsap.timeline({yoyo: true, repeat: 1, repeatDelay: 2});
+                tl.to("#typewriter", {duration: 1.5, text: phrase});
+                masterTl.add(tl);
+            });
+        }, 4000);
 
-                        <div class="feature">
-                            <div class="feature-icon">⚡</div>
-                            <div class="feature-content">
-                                <h3>Real-time Monitoring</h3>
-                                <p>Instant monitoring interface with live data visualization</p>
-                            </div>
-                        </div>
-
-                        <div class="feature">
-                            <div class="feature-icon">🗄️</div>
-                            <div class="feature-content">
-                                <h3>Centralized Database</h3>
-                                <p>Robust centralized database for efficient data management</p>
-                            </div>
-                        </div>
-
-                        <div class="feature">
-                            <div class="feature-icon">📊</div>
-                            <div class="feature-content">
-                                <h3>High-Performance Reports</h3>
-                                <p>Advanced reporting capabilities with customizable dashboards</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: GC-Messenger-Assistant Solution -->
-    <section id="messenger" class="section">
-        <div class="section-container">
-            <!-- Left Side: Animation -->
-            <div class="animation-container">
-                <div class="messenger-scene">
-                    <!-- Person -->
-                    <div class="messenger-person">
-                        <div class="person-head"></div>
-                        <div class="person-body"></div>
-                        <div class="person-arms"></div>
-                    </div>
-
-                    <!-- App Windows -->
-                    <div class="app-window window-1">
-                        <div class="window-header">
-                            <div class="app-icon">💬</div>
-                            <div class="app-name">Zalo</div>
-                        </div>
-                        <div class="window-content">
-                            <div class="chat-line"></div>
-                            <div class="chat-line"></div>
-                            <div class="chat-line"></div>
-                        </div>
-                    </div>
-
-                    <div class="app-window window-2">
-                        <div class="window-header">
-                            <div class="app-icon">📱</div>
-                            <div class="app-name">Viber</div>
-                        </div>
-                        <div class="window-content">
-                            <div class="chat-line"></div>
-                            <div class="chat-line"></div>
-                        </div>
-                    </div>
-
-                    <div class="app-window window-3">
-                        <div class="window-header">
-                            <div class="app-icon">💙</div>
-                            <div class="app-name">Messenger</div>
-                        </div>
-                        <div class="window-content">
-                            <div class="chat-line"></div>
-                            <div class="chat-line"></div>
-                            <div class="chat-line"></div>
-                        </div>
-                    </div>
-
-                    <div class="app-window window-4">
-                        <div class="window-header">
-                            <div class="app-icon">📞</div>
-                            <div class="app-name">WhatsApp</div>
-                        </div>
-                        <div class="window-content">
-                            <div class="chat-line"></div>
-                            <div class="chat-line"></div>
-                        </div>
-                    </div>
-
-                    <!-- Report -->
-                    <div class="report-panel">
-                        <div class="report-header">
-                            <div class="report-icon">📊</div>
-                            <div class="report-title">Analysis Report</div>
-                        </div>
-                        <div class="report-content">
-                            <div class="report-line"></div>
-                            <div class="report-line"></div>
-                            <div class="report-line"></div>
-                        </div>
-                    </div>
-
-                    <!-- Analysis Bubbles -->
-                    <div class="analysis-bubble bubble-1">
-                        <span>😊</span>
-                    </div>
-                    <div class="analysis-bubble bubble-2">
-                        <span>📈</span>
-                    </div>
-                    <div class="analysis-bubble bubble-3">
-                        <span>✅</span>
-                    </div>
-                    <div class="analysis-bubble bubble-4">
-                        <span>💡</span>
-                    </div>
-                    <div class="analysis-bubble bubble-5">
-                        <span>🎯</span>
-                    </div>
-                    <div class="analysis-bubble bubble-6">
-                        <span>🔍</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side: Content -->
-            <div class="content-container">
-                <div class="content-body">
-                    <h1 class="content-title">GC Messenger Assistant</h1>
-                    <h2 class="content-subtitle">Intelligent Conversation Management</h2>
-                    <p class="content-description">
-                        Our advanced messenger assistant solution helps users manage conversations across
-                        multiple platforms including Zalo, Viber, Messenger, and WhatsApp, providing
-                        intelligent analysis and real-time writing suggestions.
-                    </p>
-
-                    <div class="features-list">
-                        <div class="feature">
-                            <div class="feature-icon">💬</div>
-                            <div class="feature-content">
-                                <h3>Multi-Platform Support</h3>
-                                <p>Seamlessly manage conversations from Zalo, Viber, Messenger, WhatsApp, and Telegram
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="feature">
-                            <div class="feature-icon">📊</div>
-                            <div class="feature-content">
-                                <h3>Conversation Analysis</h3>
-                                <p>AI-powered analysis of conversation history with sentiment assessment and topic
-                                    identification</p>
-                            </div>
-                        </div>
-
-                        <div class="feature">
-                            <div class="feature-icon">🎯</div>
-                            <div class="feature-content">
-                                <h3>Smart Writing Assistant</h3>
-                                <p>Real-time suggestions for spelling, specialized terminology, and contextual
-                                    appropriateness</p>
-                            </div>
-                        </div>
-
-                        <div class="feature">
-                            <div class="feature-icon">📈</div>
-                            <div class="feature-content">
-                                <h3>Comprehensive Reports</h3>
-                                <p>Detailed reports showing conversation sentiment, participant attitudes, and key
-                                    insights</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="section-container">
-            <div class="content-container centered">
-                <div class="content-body">
-                    <h1 class="content-title">Get In Touch</h1>
-                    <p class="content-description">
-                        Ready to transform your business with our technology solutions?
-                        Contact us today to discuss your project requirements.
-                    </p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-icon">📧</span>
-                            <span>adm.gctech@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">📞</span>
-                            <span>+84 343 033 268</span>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">📍</span>
-                            <span>Ha Noi Capital, Vietnam</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
+    </script>
 </body>
-
 </html>
