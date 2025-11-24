@@ -1,17 +1,15 @@
 // Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-// Hero Animations Timeline
+// --- HERO ANIMATIONS ---
 const tl = gsap.timeline();
 
-// 1. Fade in Terminal
 tl.to(".hero-terminal", {
     opacity: 1,
     duration: 0.5,
     y: 0,
     ease: "power2.out",
 })
-    // 2. Typewriter Effect inside Terminal
     .to("#typewriter", {
         text: {
             value: "Initializing GCTEK Core Systems...",
@@ -20,7 +18,6 @@ tl.to(".hero-terminal", {
         duration: 2,
         ease: "none",
     })
-    // 3. Hero Text Reveal
     .to(
         ".hero h1",
         {
@@ -31,7 +28,6 @@ tl.to(".hero-terminal", {
         },
         "-=0.5"
     )
-    // 4. Subtext Reveal
     .to(
         ".hero-sub",
         {
@@ -43,30 +39,57 @@ tl.to(".hero-terminal", {
         "-=0.8"
     );
 
-// Service Cards Animation on Scroll
+// --- SERVICES ANIMATIONS ---
 gsap.utils.toArray(".card").forEach((card, i) => {
     gsap.from(card, {
         scrollTrigger: {
             trigger: card,
-            start: "top 85%", // Animation starts when top of card hits 85% of viewport
+            start: "top 85%",
             toggleActions: "play none none reverse",
         },
         y: 50,
         opacity: 0,
         duration: 0.8,
-        delay: i * 0.1, // Stagger effect
+        delay: i * 0.1,
         ease: "power3.out",
     });
 });
 
-// Header Animation (Glass effect enhancement on scroll)
+// --- TEAM ANIMATIONS (NEW) ---
+gsap.to(".team-member", {
+    scrollTrigger: {
+        trigger: ".team-grid",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 0.6,
+    stagger: 0.1, // Members pop in one by one
+    ease: "back.out(1.7)", // Slight bounce effect
+});
+
+// --- CTA SECTION ANIMATION (NEW) ---
+gsap.to(".cta-content", {
+    scrollTrigger: {
+        trigger: ".cta-section",
+        start: "top 75%",
+        toggleActions: "play none none reverse",
+    },
+    scale: 1,
+    opacity: 1,
+    duration: 1,
+    ease: "power4.out",
+});
+
+// --- NAVBAR SCROLL EFFECT ---
 ScrollTrigger.create({
     start: "top -50",
     end: 99999,
     toggleClass: { className: "scrolled", targets: "nav" },
 });
 
-// Interactive Cursor Effect for Terminal (Looping text)
+// --- HERO TERMINAL LOOP ---
 setTimeout(() => {
     let phrases = [
         "Optimizing SCADA Architecture...",
