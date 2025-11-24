@@ -1,259 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GCTEK | Engineering the Future</title>
-    
-    <!-- Fonts: Inter for UI, JetBrains Mono for Code/Tech feel -->
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-    
-    <!-- GSAP CDN -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <!-- Link to Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- GSAP CDN (Libraries) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
-
-    <style>
-        :root {
-            --bg-color: #050505;
-            --card-bg: #0f0f0f;
-            --text-main: #ffffff;
-            --text-muted: #888888;
-            --accent: #00dc82; /* Tech Green */
-            --border: #222222;
-            --font-main: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Subtle Grid Background */
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 4rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: -0.05em;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        .btn-contact {
-            background: var(--text-main);
-            color: var(--bg-color);
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-left: 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(to bottom right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0; /* Start hidden for GSAP */
-            transform: translateY(30px);
-        }
-
-        .hero-terminal {
-            font-family: var(--font-mono);
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            color: var(--accent);
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            opacity: 0;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 16px;
-            background: var(--accent);
-            margin-left: 5px;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Services Section */
-        .section-title {
-            font-family: var(--font-mono);
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .services {
-            padding: 6rem 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .services-header {
-            margin-bottom: 4rem;
-        }
-
-        .services-header h2 {
-            font-size: 2.5rem;
-            font-weight: 400;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 2.5rem;
-            border-radius: 12px;
-            transition: transform 0.3s, border-color 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            border-color: var(--text-muted);
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .card-icon {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        /* Decorative Code Overlay in Card */
-        .code-bg {
-            position: absolute;
-            right: -20px;
-            bottom: -20px;
-            opacity: 0.03;
-            font-family: var(--font-mono);
-            font-size: 4rem;
-            pointer-events: none;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 4rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav { padding: 1.5rem; }
-            .nav-links { display: none; } /* Simple mobile hide for demo */
-            .services { padding: 4rem 1.5rem; }
-        }
-    </style>
 </head>
+
 <body>
 
     <div class="bg-grid"></div>
 
     <nav>
-        <div class="logo">GCTEK_</div>
+        <a href="#" class="logo">GCTEK_</a>
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#about">About</a>
@@ -266,7 +40,7 @@
             <span id="typewriter"></span><span class="cursor"></span>
         </div>
         <h1>Building the Backbone<br>of Modern Industry.</h1>
-        <p style="color: var(--text-muted); margin-top: 1rem; max-width: 600px; opacity: 0; transform: translateY(20px);" class="hero-sub">
+        <p class="hero-sub">
             Premium outsourcing for Energy, Digital Transformation, and SCADA Systems.
         </p>
     </section>
@@ -282,7 +56,8 @@
             <div class="card">
                 <span class="card-icon">&lt;ENERGY /&gt;</span>
                 <h3>Smart Energy Solutions</h3>
-                <p>We build intelligent monitoring systems for renewable energy grids, ensuring maximum efficiency and real-time data analysis.</p>
+                <p>We build intelligent monitoring systems for renewable energy grids, ensuring maximum efficiency and
+                    real-time data analysis.</p>
                 <div class="code-bg">⚡</div>
             </div>
 
@@ -290,7 +65,8 @@
             <div class="card">
                 <span class="card-icon">&lt;DIGITAL /&gt;</span>
                 <h3>Digital Transformation</h3>
-                <p>Modernizing legacy workflows into seamless digital ecosystems. We bridge the gap between physical operations and cloud infrastructure.</p>
+                <p>Modernizing legacy workflows into seamless digital ecosystems. We bridge the gap between physical
+                    operations and cloud infrastructure.</p>
                 <div class="code-bg">10</div>
             </div>
 
@@ -298,93 +74,30 @@
             <div class="card">
                 <span class="card-icon">&lt;SCADA /&gt;</span>
                 <h3>SCADA Systems</h3>
-                <p>Robust supervisory control and data acquisition architectures. Secure, reliable, and built for mission-critical industrial environments.</p>
+                <p>Robust supervisory control and data acquisition architectures. Secure, reliable, and built for
+                    mission-critical industrial environments.</p>
                 <div class="code-bg">{}</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <span class="card-icon">&lt;IOT /&gt;</span>
+                <h3>Industrial IoT</h3>
+                <p>Connecting sensors and machinery to the cloud. Real-time telemetry and predictive maintenance logic
+                    integration.</p>
+                <div class="code-bg">WI</div>
             </div>
         </div>
     </section>
 
+    <div class="spacer"></div>
+
     <footer>
-        <p>&copy; 2025 GCTEK. System Status: Online.</p>
+        <p>&copy; 2025 GCTEK. System Status: <span class="status-online">Online</span>.</p>
     </footer>
 
-    <script>
-        // Register GSAP Plugins
-        gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-        // Hero Animations
-        const tl = gsap.timeline();
-
-        // 1. Fade in Terminal
-        tl.to(".hero-terminal", {
-            opacity: 1,
-            duration: 0.5,
-            y: 0,
-            ease: "power2.out"
-        })
-        // 2. Typewriter Effect inside Terminal
-        .to("#typewriter", {
-            text: {
-                value: "Initializing GCTEK Core Systems...",
-                delimiter: "" 
-            },
-            duration: 2,
-            ease: "none"
-        })
-        // 3. Hero Text Reveal
-        .to(".hero h1", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out"
-        }, "-=0.5")
-        // 4. Subtext Reveal
-        .to(".hero-sub", {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out"
-        }, "-=0.8");
-
-        // Service Cards Animation on Scroll
-        gsap.utils.toArray('.card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 85%", // Start when top of card hits 85% of viewport height
-                    toggleActions: "play none none reverse"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                delay: i * 0.1, // Stagger effect
-                ease: "power3.out"
-            });
-        });
-
-        // Header Animation (Glass effect enhancement on scroll)
-        ScrollTrigger.create({
-            start: "top -50",
-            end: 99999,
-            toggleClass: {className: "scrolled", targets: "nav"}
-        });
-
-        // Interactive Cursor Effect for Terminal (Optional loop to clear/retype)
-        setTimeout(() => {
-            let phrases = [
-                "Optimizing SCADA Architecture...", 
-                "Deploying Energy Algorithms...", 
-                "GCTEK: Ready for Deployment."
-            ];
-            let masterTl = gsap.timeline({repeat: -1, repeatDelay: 1});
-            
-            phrases.forEach(phrase => {
-                let tl = gsap.timeline({yoyo: true, repeat: 1, repeatDelay: 2});
-                tl.to("#typewriter", {duration: 1.5, text: phrase});
-                masterTl.add(tl);
-            });
-        }, 4000);
-
-    </script>
+    <!-- Link to Custom JS -->
+    <script src="index.js"></script>
 </body>
+
 </html>
