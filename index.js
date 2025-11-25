@@ -255,3 +255,47 @@ function explode(x, y, scale) {
         });
     }
 }
+/* =========================================
+   HIDDEN DOOR LOGIC
+   ========================================= */
+
+const doorTrigger = document.querySelector(".hidden-door-trigger");
+const doorPanel = document.querySelector(".door-panel");
+const doorLight = document.querySelector(".door-light");
+
+// Create a timeline for the door but pause it initially
+const doorTl = gsap.timeline({ paused: true });
+
+doorTl
+    // 1. Open the door (Swing 3D)
+    .to(doorPanel, {
+        rotationY: -110, // Rotate open towards left
+        duration: 1.2,
+        ease: "power2.inOut",
+        transformOrigin: "left center",
+    })
+    // 2. Light turns on and flares out
+    .to(
+        doorLight,
+        {
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.in",
+        },
+        "-=0.8"
+    ); // Start while door is opening
+
+// Interactions
+doorTrigger.addEventListener("mouseenter", () => {
+    doorTl.play();
+});
+
+doorTrigger.addEventListener("mouseleave", () => {
+    doorTl.reverse();
+});
+
+// Optional: Click event for the door (What happens if they enter?)
+doorTrigger.addEventListener("click", () => {
+    // You could redirect, or trigger a special alert
+    alert("ACCESS GRANTED: Entering Mainframe Level 0...");
+});
