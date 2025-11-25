@@ -449,3 +449,58 @@ footer {
         font-size: 1.2rem;
     }
 }
+/* --- INTERACTIVE MOUSE EFFECTS --- */
+/* --- INTERACTIVE MOUSE EFFECTS --- */
+
+/* 1. Binary Rain Drops */
+.binary-drop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: "JetBrains Mono", monospace;
+    color: var(--accent);
+    font-size: 14px; /* Slightly bigger to be seen */
+    line-height: 1;
+    pointer-events: none;
+    z-index: 9999;
+    user-select: none;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 220, 130, 0.8);
+    will-change: transform, opacity; /* Performance optimization */
+}
+
+/* 2. Energy Charge Orb */
+.charge-orb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 220, 130, 0.2);
+    border: 2px solid var(--accent);
+    /* Center anchor point logic is handled in GSAP xPercent/yPercent usually, 
+       but here we center via transform inside JS or simple margin */
+    pointer-events: none;
+    z-index: 9998;
+    box-shadow: 0 0 15px var(--accent);
+    border-radius: 50%;
+}
+
+/* 3. Explosion Particles */
+.explosion-particle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: var(--highlight);
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--highlight);
+}
+
+.explosion-particle.green {
+    background-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
