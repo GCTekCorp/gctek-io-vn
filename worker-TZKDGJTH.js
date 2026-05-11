@@ -1,0 +1,1 @@
+addEventListener("message",async r=>{let s=r.data;if(s.type==="parse")try{postMessage({type:"progress",phase:"Reading file",pct:0});let e=await s.file.text();postMessage({type:"progress",phase:"Parsing JSON",pct:50});let a=JSON.parse(e);postMessage({type:"result",value:a})}catch(e){postMessage({type:"error",message:e.message})}});
